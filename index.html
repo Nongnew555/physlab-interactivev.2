@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PhysLab Interactive — เว็บเรียนฟิสิกส์พร้อมแบบจำลองเคลื่อนไหวและปัญหาชวนคิด</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Ambient Aurora Backdrop -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Mobile / Tablet Topbar -->
+  <header class="topbar">
+    <button class="btn btn-sm" id="mobile-menu-btn">☰ บทเรียน</button>
+    <div style="font-family:var(--font-head);font-weight:700;font-size:16px;">⚛ PhysLab</div>
+    <div style="display:flex;gap:6px;">
+      <button class="btn btn-sm open-formula-btn">📐</button>
+      <button class="btn btn-sm theme-toggle-btn">☀️</button>
+    </div>
+  </header>
+
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <div class="app-shell">
+    <!-- Glass Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand" id="brand-home">
+          <div class="brand-icon">⚛</div>
+          <div>
+            <div class="brand-title">PhysLab</div>
+            <div class="brand-sub">IGCSE + Classical Physics</div>
+          </div>
+        </div>
+
+        <div class="mastery-card">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 46 46">
+              <defs>
+                <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#38bdf8" />
+                  <stop offset="100%" stop-color="#34d399" />
+                </linearGradient>
+              </defs>
+              <circle class="ring-bg" cx="23" cy="23" r="19" />
+              <circle class="ring-fg" id="ring-fg" cx="23" cy="23" r="19" stroke-dasharray="119.38" stroke-dashoffset="119.38" />
+            </svg>
+            <div class="ring-pct" id="ring-pct">0%</div>
+          </div>
+          <div class="mastery-info">
+            <div class="mastery-title">ความคืบหน้าการเรียน</div>
+            <div class="mastery-sub" id="mastery-sub">อ่านแล้ว 0/8 บท</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-search">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="sidebar-search" placeholder="ค้นหาบทเรียน หรือสูตร..." />
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" id="sidebar-nav"></nav>
+
+      <div class="sidebar-footer">
+        <button class="btn btn-sm open-formula-btn">📐 รวมสูตร</button>
+        <button class="btn btn-sm theme-toggle-btn">☀️ โหมดสว่าง</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container" id="main-container"></div>
+    </main>
+  </div>
+
+  <!-- Formula Sheet Modal -->
+  <div class="modal-backdrop" id="formula-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 style="font-size:19px;">📐 ชีตรวมสูตรฟิสิกส์ทั้งหมด (แตะที่การ์ดเพื่อคัดลอก)</h2>
+        <button class="btn btn-sm" id="close-formula-modal">✕ ปิด</button>
+      </div>
+      <div class="modal-body" id="formula-modal-body"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="js/data.js"></script>
+  <script src="js/simulations.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
